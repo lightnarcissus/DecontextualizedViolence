@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class SpawnCubes : MonoBehaviour {
 
-	public int cubeLimit=3;
+	public int cubeLimit=10;
 	public static int currentCubes=0;
 	public GameObject cube;
 	public List<GameObject> cubeList; 
@@ -12,6 +12,7 @@ public class SpawnCubes : MonoBehaviour {
 	void Start () {
 
 		InvokeRepeating ("CubeSpawn", 1f, 0.3f);
+		InvokeRepeating ("UpdateCubeLimit", 10f, 10f);
 		for (int i=0; i<cubeLimit; i++) {
 
 			tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f,2.3f),Random.Range (-3.5f,5.52f),0f),Quaternion.identity) as GameObject;
@@ -26,6 +27,11 @@ public class SpawnCubes : MonoBehaviour {
 
 
 	
+	}
+
+	public void UpdateCubeLimit()
+	{
+		cubeLimit += 10;
 	}
 
 
