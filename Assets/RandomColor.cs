@@ -17,7 +17,9 @@ public class RandomColor : MonoBehaviour {
 
 		GetComponent<Renderer>().material.color=randColors[Random.Range(0,7)];
 		targetSprite=GameObject.Find ("TargetSprite");
-		canvas = GameObject.Find ("Canvas");
+		canvas = GameObject.Find ("BloodContainer");
+		if (Random.value > 0.5f)
+			gameObject.layer = 9;
 	}
 	
 	// Update is called once per frame
@@ -43,7 +45,7 @@ public class RandomColor : MonoBehaviour {
 	{
 		//Debug.Log("hi");
 		GetComponent<Renderer>().material.color=randColors[Random.Range(0,7)];
-		targetSprite.transform.position = new Vector3 (transform.position.x,transform.position.y,targetSprite.transform.position.z);
+//		targetSprite.transform.position = new Vector3 (transform.position.x,transform.position.y,targetSprite.transform.position.z);
 		tempObj=Instantiate (bloodCol,new Vector3(transform.position.x,transform.position.y,-1.85f),Quaternion.identity) as GameObject;
 		tempText=Instantiate (bloodText,Camera.main.WorldToScreenPoint(transform.position+new Vector3(Random.Range (0.01f,-0.01f),Random.Range (-0.02f,-0.02f),0f)),Quaternion.identity) as GameObject;
 		tempText.transform.parent=canvas.transform;
@@ -52,6 +54,7 @@ public class RandomColor : MonoBehaviour {
 		tempObj.GetComponent<AdjustText>().bloodText=tempText;
 		tempObj.GetComponent<AdjustText>().MoveText();
 
+		BackgroundChanger.colorChanger += 0.5f;
 
 		healthLeft--;
 		if (healthLeft < 0) {

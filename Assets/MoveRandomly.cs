@@ -14,6 +14,7 @@ public class MoveRandomly : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(!StateManager.gameOver)
 		transform.position = Vector3.Lerp (transform.position, targetVec, Time.deltaTime * 0.1f);
 	
 	}

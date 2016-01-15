@@ -9,11 +9,12 @@ public class BloodType : MonoBehaviour {
 	void Start () {
 	
 		bloodStickiness = Random.value;
-		GetComponent<Rigidbody> ().drag = bloodStickiness * 2f;
+		GetComponent<Rigidbody> ().drag = bloodStickiness * Random.Range(1f,2f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
 
 
 	

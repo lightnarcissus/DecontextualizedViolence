@@ -9,6 +9,8 @@ public class TimerScore : MonoBehaviour {
 	public string[] levelNames;
 	private int level = 0;
 	public float timer=0f;
+	public static float bestTimer=0f;
+
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("UpdateLevel", 10f, 10f);
@@ -19,8 +21,10 @@ public class TimerScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		timer += Time.deltaTime;
-		timerText.text = timer.ToString ("F2");	
+		if (!StateManager.gameOver) {
+			timer += Time.deltaTime;
+			timerText.text = timer.ToString ("F2");	
+		}
 	}
 
 	public void UpdateLevel()
