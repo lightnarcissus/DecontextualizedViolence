@@ -7,9 +7,11 @@ public class AdjustText : MonoBehaviour {
 	public GameObject bloodText;
 	public float movementScale=1f;
 	private Rigidbody rBody;
+	private float rotateBody=0f;
 
 	// Use this for initialization
 	void Start () {
+		rotateBody = Random.Range (0f, 360f);
 		rBody = GetComponent<Rigidbody> ();
 		InvokeRepeating ("MoveText", 0.01f, 0.1f);
 	
@@ -29,6 +31,7 @@ public class AdjustText : MonoBehaviour {
 		if(bloodText!=null)
 		{
 			bloodText.transform.position = Camera.main.WorldToScreenPoint (transform.position);
+			bloodText.transform.eulerAngles=new Vector3(0f,0f,rotateBody);
 			bloodText.GetComponent<Text>().color=new Color(GetComponent<BloodType>().bloodStickiness,0f,0f);
 		}
 
