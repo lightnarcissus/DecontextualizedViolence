@@ -17,7 +17,7 @@ public class DebugText : MonoBehaviour {
 	void Update () {
 
 		accVec = Input.acceleration;
-		debugText.text = AdjustText.swipeDir.x.ToString () + " , " + AdjustText.swipeDir.y.ToString ();
+		debugText.text = AdjustText.swipeDir.ToString ();
 	
 	}
 }

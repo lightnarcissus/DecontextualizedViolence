@@ -46,6 +46,7 @@ public class StateManager : MonoBehaviour {
 	{
 		BackgroundChanger.colorChanger = 1f;
 		scoreKeeper.GetComponent<TimerScore> ().timer = 0f;
+		SpawnCubes.currentCubes = 0;
 
 	}
 }

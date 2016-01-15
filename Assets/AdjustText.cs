@@ -18,7 +18,7 @@ public class AdjustText : MonoBehaviour {
 	private float startTime;
 	private float comfortZone;
 
-	public static Vector2 swipeDir;
+	public static float swipeDir;
 	// Use this for initialization
 	void Start () {
 		rotateBody = Random.Range (0f, 360f);
@@ -31,46 +31,45 @@ public class AdjustText : MonoBehaviour {
 	void FixedUpdate () {
 
 
-		if (Input.touchCount > 0) {
-			Touch touch = Input.touches [0];
-			
-			switch (touch.phase)
-			{
-			case TouchPhase.Began:
-				couldBeSwipe = true;
-				startPos = touch.position;
-				startTime = Time.time;
-				break;
-				
-			case TouchPhase.Moved:
-				if (Mathf.Abs (touch.position.y - startPos.y) > comfortZone) {
-					couldBeSwipe = false;
-				}
-				break;
-				
-			case TouchPhase.Stationary:
-				couldBeSwipe = false;
-				break;
-				
-			case TouchPhase.Ended:
-				var swipeTime = Time.time - startTime;
-				var swipeDist = (touch.position - startPos);
-
-
-				//Debug.Log ("tou
-				swipeDir=startPos;
-
-//				if (couldBeSwipe (swipeTime < maxSwipeTime) (swipeDist > minSwipeDist)) {
-//					// It's a swiiiiiiiiiiiipe!
-//					var swipeDirection = Mathf.Sign (touch.position.y - startPos.y);
-//					
-//					// Do something here in reaction to the swipe.
-//				}
-				break;
-			default:
-				break;
-			}
-		}
+//		if (Input.touchCount > 0) {
+//			Touch touch = Input.touches [0];
+//			
+//			switch (touch.phase)
+//			{
+//			case TouchPhase.Began:
+//				couldBeSwipe = true;
+//				startPos = touch.position;
+//				startTime = Time.time;
+//				break;
+//				
+//			case TouchPhase.Moved:
+//				couldBeSwipe = false;
+//				break;
+//				
+//			case TouchPhase.Stationary:
+//				couldBeSwipe = false;
+//				break;
+//				
+//			case TouchPhase.Ended:
+//				var swipeTime = Time.time - startTime;
+//				var swipeDist = (touch.position - startPos).magnitude;
+//
+//
+//				//Debug.Log ("tou
+//				if(!couldBeSwipe)
+//					swipeDir=(touch.position - startPos).magnitude;
+//
+////				if (couldBeSwipe (swipeTime < maxSwipeTime) (swipeDist > minSwipeDist)) {
+////					// It's a swiiiiiiiiiiiipe!
+////					var swipeDirection = Mathf.Sign (touch.position.y - startPos.y);
+////					
+////					// Do something here in reaction to the swipe.
+////				}
+//				break;
+//			default:
+//				break;
+//			}
+//		}
 
 		pos = transform.position;
 		pos.y = Vector3.Dot(Input.gyro.gravity, Vector3.up) * movementScale;

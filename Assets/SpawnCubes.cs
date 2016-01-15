@@ -37,6 +37,7 @@ public class SpawnCubes : MonoBehaviour {
 
 	public void CubeSpawn()
 	{
+		if(!StateManager.gameOver)
 		if (currentCubes < cubeLimit) {
 			tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f,2.3f),Random.Range (-3.5f,5.52f),0f),Quaternion.identity) as GameObject;
 			cubeList.Add (tempCube);

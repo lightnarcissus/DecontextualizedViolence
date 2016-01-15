@@ -26,6 +26,7 @@ public class CubeMerge : MonoBehaviour {
 				transform.localScale =new Vector3(transform.localScale.x+1f,transform.localScale.y+1f,transform.localScale.z+1);
 
 				//play some effect 
+				SpawnCubes.currentCubes--;
 				Destroy (col.gameObject);
 
 			}
