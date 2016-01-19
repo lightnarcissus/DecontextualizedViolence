@@ -60,7 +60,7 @@ public class DataManager : MonoBehaviour {
 
 	public void UpdateBestScore()
 	{
-		bestScoreText.text = "Best Score: " + localBestScore.ToString ("F2");
+		bestScoreText.text = "Best Score: \n" + localBestScore.ToString ("F2");
 	}
 
 

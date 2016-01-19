@@ -49,7 +49,9 @@ public class RandomColor : MonoBehaviour {
 		tempObj=Instantiate (bloodCol,new Vector3(transform.position.x,transform.position.y,-1.85f),Quaternion.identity) as GameObject;
 		tempText=Instantiate (bloodText,Camera.main.WorldToScreenPoint(transform.position+new Vector3(Random.Range (0.01f,-0.01f),Random.Range (-0.02f,-0.02f),0f)),Quaternion.identity) as GameObject;
 		tempText.transform.parent=canvas.transform;
-		tempText.GetComponent<Text> ().fontSize = Mathf.FloorToInt((80f - (20f * healthLeft)));
+		Vector3 scaleFactor = transform.localScale / 0.3f;
+		//Debug.Log (scaleFactor);
+		tempText.GetComponent<Text> ().fontSize = Mathf.FloorToInt((120f -(30f* healthLeft)));
 		transform.localScale += new Vector3 (0.3f, 0.3f, 0.3f);
 		tempObj.GetComponent<AdjustText>().bloodText=tempText;
 		tempObj.GetComponent<AdjustText>().MoveText();

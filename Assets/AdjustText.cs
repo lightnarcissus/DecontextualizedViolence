@@ -26,6 +26,7 @@ public class AdjustText : MonoBehaviour {
 		rotateBody = Random.Range (0f, 360f);
 		rBody = GetComponent<Rigidbody> ();
 		InvokeRepeating ("MoveText", 0.01f, 0.1f);
+		InvokeRepeating ("CheckPosition", 1f, 1f);
 	
 	}
 	
@@ -78,7 +79,7 @@ public class AdjustText : MonoBehaviour {
 				}
 				
 				float swipeDistHorizontal = (new Vector3(touch.position.x,0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
-				DebugText.ok="Hor: "+swipeDistHorizontal.ToString();
+				DebugText.ok="Vertical: "+swipeDistVertical.ToString() + " \n" + "Hor: "+swipeDistHorizontal.ToString();
 				if (swipeDistHorizontal > minSwipeDistX) 
 					
 				{
@@ -119,5 +120,20 @@ public class AdjustText : MonoBehaviour {
 		}
 
 		gameObject.GetComponent<BoxCollider> ().size = new Vector3 (bloodText.GetComponent<Text> ().fontSize / 80f * 2.84f, bloodText.GetComponent<Text> ().fontSize / 80f * 0.608f);
-	} 
+	}
+
+	public void CheckPosition()
+	{
+		if ((transform.position.x > 2.3f || transform.position.x < -2.3f) || (transform.position.y > 5.52f || transform.position.y < -3.52f)) {
+			//Debug.Log ("destroying");
+			Destroy(bloodText);
+			Destroy(gameObject);
+
+		}
+	}
+
+	void OnMouseDown()
+	{
+		Debug.Log ("NICE");
+	}
 }

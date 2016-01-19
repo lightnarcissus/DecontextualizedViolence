@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityStandardAssets.ImageEffects;
 public class BackgroundChanger : MonoBehaviour {
 
 	public AudioSource music;
@@ -20,9 +20,14 @@ public class BackgroundChanger : MonoBehaviour {
 		//Debug.Log (Mathf.PingPong (Time.time, 3));
 	//	GetComponent<Camera>().backgroundColor=new Color (Mathf.Sin (Time.time), 0f,0f,1f);
 		GetComponent<Camera> ().backgroundColor = new Color (colorChanger, colorChanger, colorChanger);
+		GetComponent<VignetteAndChromaticAberration> ().blur = (1f-colorChanger);
+		GetComponent<VignetteAndChromaticAberration> ().blurSpread = (1f-colorChanger);
+		GetComponent<VignetteAndChromaticAberration> ().chromaticAberration = (1f-colorChanger) * 7f;
 		colorChanger -= Time.deltaTime*difficultyLevel;
+
 		if(colorChanger>1f)
 			colorChanger=1f;
+
 
 		if (colorChanger < 0.01f) {
 			gameObject.GetComponent<StateManager>().GameOver();
