@@ -25,6 +25,9 @@ public class TimerScore : MonoBehaviour {
 			timer += Time.deltaTime;
 			timerText.text = timer.ToString ("F2");	
 		}
+
+		if (Input.GetKeyDown (KeyCode.Escape))
+			Application.LoadLevel (0);
 	}
 
 	public void UpdateLevel()

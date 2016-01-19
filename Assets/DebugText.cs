@@ -6,6 +6,7 @@ public class DebugText : MonoBehaviour {
 
 	public Text debugText;
 	private Vector3 accVec;
+	public static string ok;
 	// Use this for initialization
 	void Start () {
 
@@ -17,7 +18,7 @@ public class DebugText : MonoBehaviour {
 	void Update () {
 
 		accVec = Input.acceleration;
-		debugText.text = AdjustText.swipeDir.ToString ();
+		debugText.text = ok;
 	
 	}
 }

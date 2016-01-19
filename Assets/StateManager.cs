@@ -7,11 +7,14 @@ public class StateManager : MonoBehaviour {
 	public GameObject scoreKeeper;
 	public float bestScore=0f;
 	public static bool gameOver=false;
+	private GameObject dataManager;
 
 	// Use this for initialization
 	void Start () {
 
+		bestScore=PlayerPrefs.GetFloat("BestTime");
 		gameOverPanel.SetActive (false);
+		dataManager = GameObject.Find ("DataLoader");
 	
 	}
 	
@@ -34,10 +37,12 @@ public class StateManager : MonoBehaviour {
 	{
 
 		gameOver = true;
+		dataManager.GetComponent<DataManager> ().Save ();
 		gameOverPanel.SetActive (true);
 		gameOverPanel.transform.GetChild (0).gameObject.GetComponent<Text> ().text = "Last: "+scoreKeeper.GetComponent<TimerScore> ().timer.ToString ("F2");
 		if (scoreKeeper.GetComponent<TimerScore> ().timer > TimerScore.bestTimer) {
 			TimerScore.bestTimer=scoreKeeper.GetComponent<TimerScore> ().timer;
+			dataManager.GetComponent<DataManager>().localBestScore=TimerScore.bestTimer;
 		}
 		gameOverPanel.transform.GetChild (1).gameObject.GetComponent<Text> ().text = "Best: "+ TimerScore.bestTimer.ToString ("F2");
 	}

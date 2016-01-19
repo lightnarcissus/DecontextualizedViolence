@@ -12,12 +12,14 @@ public class AdjustText : MonoBehaviour {
 
 	private bool couldBeSwipe=false;
 	private Vector2 startPos;
-	private float minSwipeDist;
-	private float maxSwipeTime;
-	private float swipeTime;
-	private float startTime;
-	private float comfortZone;
 
+	public float minSwipeDistY;
+	
+	public float minSwipeDistX;
+
+	public float swipeForce=10f;
+
+	
 	public static float swipeDir;
 	// Use this for initialization
 	void Start () {
@@ -27,49 +29,78 @@ public class AdjustText : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
 
-
-//		if (Input.touchCount > 0) {
-//			Touch touch = Input.touches [0];
-//			
-//			switch (touch.phase)
-//			{
-//			case TouchPhase.Began:
-//				couldBeSwipe = true;
-//				startPos = touch.position;
-//				startTime = Time.time;
-//				break;
-//				
-//			case TouchPhase.Moved:
-//				couldBeSwipe = false;
-//				break;
-//				
-//			case TouchPhase.Stationary:
-//				couldBeSwipe = false;
-//				break;
-//				
-//			case TouchPhase.Ended:
-//				var swipeTime = Time.time - startTime;
-//				var swipeDist = (touch.position - startPos).magnitude;
-//
-//
-//				//Debug.Log ("tou
-//				if(!couldBeSwipe)
-//					swipeDir=(touch.position - startPos).magnitude;
-//
-////				if (couldBeSwipe (swipeTime < maxSwipeTime) (swipeDist > minSwipeDist)) {
-////					// It's a swiiiiiiiiiiiipe!
-////					var swipeDirection = Mathf.Sign (touch.position.y - startPos.y);
-////					
-////					// Do something here in reaction to the swipe.
-////				}
-//				break;
-//			default:
-//				break;
-//			}
-//		}
+	
+	void FixedUpdate()
+	{
+		//#if UNITY_ANDROID
+		if (Input.touchCount > 0) 
+			
+		{
+			
+			Touch touch = Input.touches[0];
+			
+			
+			
+			switch (touch.phase) 
+				
+			{
+				
+			case TouchPhase.Began:
+				
+				startPos = touch.position;
+				
+				break;
+				
+				
+				
+			case TouchPhase.Ended:
+				
+				float swipeDistVertical = (new Vector3(0, touch.position.y, 0) - new Vector3(0, startPos.y, 0)).magnitude;
+				DebugText.ok="Vertical: "+swipeDistVertical.ToString();
+				if (swipeDistVertical > minSwipeDistY) 
+					
+				{
+					
+					float swipeValue = Mathf.Sign(touch.position.y - startPos.y);
+					
+					if (swipeValue > 0)//up swipe
+						rBody.AddForce(Vector3.up * swipeForce);
+					//DebugText.ok="up swipe";
+					//Jump ();
+					
+					else if (swipeValue < 0)//down swipe
+						rBody.AddForce(Vector3.down * swipeForce);
+						//Debug.Log ("ok");
+					//DebugText.ok="down swipe";
+					//Shrink ();
+					
+				}
+				
+				float swipeDistHorizontal = (new Vector3(touch.position.x,0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
+				DebugText.ok="Hor: "+swipeDistHorizontal.ToString();
+				if (swipeDistHorizontal > minSwipeDistX) 
+					
+				{
+					
+					float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
+					
+					if (swipeValue > 0)//right swipe
+						rBody.AddForce(Vector3.right * swipeForce);
+						//Debug.Log ("ok");
+					//DebugText.ok="right swipe";
+					//MoveRight ();
+					
+					else if (swipeValue < 0)//left swipe
+						rBody.AddForce(Vector3.left * swipeForce);
+						//Debug.Log ("ok");
+					//DebugText.ok="left swipe";
+					//MoveLeft ();
+					
+				}
+				break;
+			}
+		}
 
 		pos = transform.position;
 		pos.y = Vector3.Dot(Input.gyro.gravity, Vector3.up) * movementScale;

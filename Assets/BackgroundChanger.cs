@@ -5,6 +5,7 @@ public class BackgroundChanger : MonoBehaviour {
 
 	public AudioSource music;
 	public static float colorChanger = 1f;
+	public float difficultyLevel=0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class BackgroundChanger : MonoBehaviour {
 		//Debug.Log (Mathf.PingPong (Time.time, 3));
 	//	GetComponent<Camera>().backgroundColor=new Color (Mathf.Sin (Time.time), 0f,0f,1f);
 		GetComponent<Camera> ().backgroundColor = new Color (colorChanger, colorChanger, colorChanger);
-		colorChanger -= Time.deltaTime*0.5f;
+		colorChanger -= Time.deltaTime*difficultyLevel;
 		if(colorChanger>1f)
 			colorChanger=1f;
 
