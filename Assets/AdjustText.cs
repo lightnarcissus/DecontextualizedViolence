@@ -27,6 +27,7 @@ public class AdjustText : MonoBehaviour {
 		rBody = GetComponent<Rigidbody> ();
 		InvokeRepeating ("MoveText", 0.01f, 0.1f);
 		InvokeRepeating ("CheckPosition", 1f, 1f);
+
 	
 	}
 	
@@ -131,6 +132,7 @@ public class AdjustText : MonoBehaviour {
 
 		}
 	}
+
 
 	void OnMouseDown()
 	{

@@ -18,6 +18,7 @@ public class RandomColor : MonoBehaviour {
 		GetComponent<Renderer>().material.color=randColors[Random.Range(0,7)];
 		targetSprite=GameObject.Find ("TargetSprite");
 		canvas = GameObject.Find ("BloodContainer");
+		InvokeRepeating ("CheckSize", 0.1f, 0.2f);
 		if (Random.value > 0.5f)
 			gameObject.layer = 9;
 	}
@@ -63,6 +64,15 @@ public class RandomColor : MonoBehaviour {
 			SpawnCubes.currentCubes--;
 			Destroy(this.gameObject); 
 
+		}
+	}
+
+	public void CheckSize()
+	{
+		if (transform.localScale.x > 8f) {
+			Debug.Log ("hi");
+			StateManager.gameOver=true;
+			StateManager.change=true;
 		}
 	}
 

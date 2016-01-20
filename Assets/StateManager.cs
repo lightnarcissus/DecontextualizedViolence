@@ -7,6 +7,7 @@ public class StateManager : MonoBehaviour {
 	public GameObject scoreKeeper;
 	public float bestScore=0f;
 	public static bool gameOver=false;
+	public static bool change=false;
 	private GameObject dataManager;
 
 	// Use this for initialization
@@ -30,6 +31,12 @@ public class StateManager : MonoBehaviour {
 				Application.LoadLevel (1);
 			}
 		}
+
+		if (change) {
+			GameOver();
+			change=false;
+		}
+
 	
 	}
 
