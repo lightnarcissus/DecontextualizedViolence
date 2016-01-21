@@ -120,7 +120,7 @@ public class AdjustText : MonoBehaviour {
 			bloodText.GetComponent<Text>().color=new Color(GetComponent<BloodType>().bloodStickiness,0f,0f);
 		}
 
-		gameObject.GetComponent<BoxCollider> ().size = new Vector3 (bloodText.GetComponent<Text> ().fontSize / 80f * 2.84f, bloodText.GetComponent<Text> ().fontSize / 80f * 0.608f);
+		gameObject.GetComponent<BoxCollider> ().size = new Vector3 (bloodText.GetComponent<Text> ().fontSize / 120f * 2.84f, bloodText.GetComponent<Text> ().fontSize / 120f * 0.608f);
 	}
 
 	public void CheckPosition()

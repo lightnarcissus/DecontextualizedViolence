@@ -49,6 +49,8 @@ public class RandomColor : MonoBehaviour {
 //		targetSprite.transform.position = new Vector3 (transform.position.x,transform.position.y,targetSprite.transform.position.z);
 		tempObj=Instantiate (bloodCol,new Vector3(transform.position.x,transform.position.y,-1.85f),Quaternion.identity) as GameObject;
 		tempText=Instantiate (bloodText,Camera.main.WorldToScreenPoint(transform.position+new Vector3(Random.Range (0.01f,-0.01f),Random.Range (-0.02f,-0.02f),0f)),Quaternion.identity) as GameObject;
+		tempObj.transform.parent = transform.parent.GetComponent<CubeManager> ().bloodManager.transform;
+		transform.parent.GetComponent<CubeManager> ().bloodManager.GetComponent<BloodManager> ().AddBlood (tempObj);
 		tempText.transform.parent=canvas.transform;
 		Vector3 scaleFactor = transform.localScale / 0.3f;
 		//Debug.Log (scaleFactor);
