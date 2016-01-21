@@ -9,7 +9,7 @@ public class TimerScore : MonoBehaviour {
 	public Text timerText;
 	public Text levelText;
 	public string[] levelNames;
-	public int level = 0;
+	public int level = 1;
 	public float timer=0f;
 	public static float bestTimer=0f;
 	private bool zoomOut=false;
@@ -49,7 +49,7 @@ public class TimerScore : MonoBehaviour {
 	public void UpdateLevel()
 	{
 		level++;
-		levelText.text= levelNames [level];
+		levelText.text= levelNames [level-1];
 		tempVal=mainCam.GetComponent<Camera> ().orthographicSize;
 		zoomOut = true;
 		bloodManager.GetComponent<BloodManager> ().UpdateBlood (level);

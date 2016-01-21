@@ -23,7 +23,7 @@ public class CubeMerge : MonoBehaviour {
 		
 				//Destroy(this.gameObject);
 				//Instantiate (cube,transform.position,Quaternion.identity);
-				transform.localScale =new Vector3(transform.localScale.x+1f,transform.localScale.y+1f,transform.localScale.z+1);
+				transform.localScale =new Vector3(transform.localScale.x+0.5f,transform.localScale.y+0.5f,transform.localScale.z+0.5f);
 
 				//play some effect 
 				SpawnCubes.currentCubes--;

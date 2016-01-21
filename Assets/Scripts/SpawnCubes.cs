@@ -10,6 +10,7 @@ public class SpawnCubes : MonoBehaviour {
 //	public List<GameObject> cubeList; 
 	private GameObject tempCube;
 	public bool spawnSpheres=false;
+	private int level = 1;
 	// Use this for initialization
 	void Start () {
 
@@ -22,7 +23,7 @@ public class SpawnCubes : MonoBehaviour {
 			tempCube.transform.parent=transform;
 			currentCubes++;
 		}
-	
+
 	}
 	
 	// Update is called once per frame
@@ -35,6 +36,7 @@ public class SpawnCubes : MonoBehaviour {
 	public void UpdateCubeLimit()
 	{
 		cubeLimit += 10;
+		level++;
 	}
 
 	public void SpawnMore(int number, Vector3 pos)
@@ -55,12 +57,21 @@ public class SpawnCubes : MonoBehaviour {
 			if(spawnSpheres)
 			{
 				if(Random.value>0.5f)
-					tempCube=Instantiate (sphere,new Vector3(Random.Range (-2.3f,2.3f),Random.Range (-3.5f,5.52f),0f),Quaternion.identity) as GameObject;
+				{
+					tempCube=Instantiate (sphere,new Vector3(Random.Range (-2.3f-(2.24f*(level-1)),2.3f+(2.24f*(level-1))),Random.Range (-3.5f-(2.45f*(level-1)),5.52f+(1.89f*(level-1))),0f),Quaternion.identity) as GameObject;
+					tempCube.transform.parent=transform;
+				}
 				else
-					tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f,2.3f),Random.Range (-3.5f,5.52f),0f),Quaternion.identity) as GameObject;
+				{
+					tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f-(2.24f*(level-1)),2.3f+(2.24f*(level-1))),Random.Range (-3.5f-(2.45f*(level-1)),5.52f+(1.89f*(level-1))),0f),Quaternion.identity) as GameObject;
+					tempCube.transform.parent=transform;
+				}
 			}
 			else
-				tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f,2.3f),Random.Range (-3.5f,5.52f),0f),Quaternion.identity) as GameObject;
+			{
+				tempCube=Instantiate (cube,new Vector3(Random.Range (-2.3f-(2.24f*(level-1)),2.3f+(2.24f*(level-1))),Random.Range (-3.5f-(2.45f*(level-1)),5.52f+(1.89f*(level-1))),0f),Quaternion.identity) as GameObject;
+				tempCube.transform.parent=transform;
+			}
 		//	cubeList.Add (tempCube);
 
 			tempCube.transform.parent=transform;

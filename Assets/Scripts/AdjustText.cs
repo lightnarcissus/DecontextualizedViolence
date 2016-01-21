@@ -127,6 +127,7 @@ public class AdjustText : MonoBehaviour {
 	{
 		if ((transform.position.x > 2.3f || transform.position.x < -2.3f) || (transform.position.y > 5.52f || transform.position.y < -3.52f)) {
 			//Debug.Log ("destroying");
+			transform.parent.GetComponent<BloodManager>().bloodList.Remove(this.gameObject);
 			Destroy(bloodText);
 			Destroy(gameObject);
 
@@ -136,6 +137,6 @@ public class AdjustText : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Debug.Log ("NICE");
+		//Debug.Log ("NICE");
 	}
 }

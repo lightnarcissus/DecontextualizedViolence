@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class BloodManager : MonoBehaviour {
 
 	public GameObject scoreKeeper;
+	private int level=0;
 	public GameObject cubeManager;
 	public List<GameObject> bloodList;
 	// Use this for initialization

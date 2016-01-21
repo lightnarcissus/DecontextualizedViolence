@@ -12,6 +12,7 @@ public class RandomColor : MonoBehaviour {
 	public GameObject canvas;
 	private GameObject tempObj;
 	private GameObject tempText;
+	public GameObject cubes;
 	// Use this for initialization
 	void Start () {
 
@@ -64,6 +65,16 @@ public class RandomColor : MonoBehaviour {
 		healthLeft--;
 		if (healthLeft < 0) {
 			SpawnCubes.currentCubes--;
+			if(gameObject.tag=="Sphere")
+			{
+				for(int i=0;i<5;i++)
+				{
+					GameObject tempCube=Instantiate(cubes,transform.position,Quaternion.identity) as GameObject;
+					SpawnCubes.currentCubes++;
+					tempCube.transform.parent=transform.parent;
+					tempCube.GetComponent<Rigidbody>().AddExplosionForce(2f,transform.position,1.5f);
+				}
+			}
 			Destroy(this.gameObject); 
 
 		}

@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class SpawnOnDestroy : MonoBehaviour {
-
-
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +15,6 @@ public class SpawnOnDestroy : MonoBehaviour {
 
 	void OnDestroy()
 	{
-		transform.parent.GetComponent<SpawnCubes> ().SpawnMore (5,transform.position);
+		//transform.parent.GetComponent<SpawnCubes> ().SpawnMore (5,transform.position);
 	}
 }
