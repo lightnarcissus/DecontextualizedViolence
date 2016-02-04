@@ -69,10 +69,10 @@ public class RandomColor : MonoBehaviour {
 			{
 				for(int i=0;i<5;i++)
 				{
-					GameObject tempCube=Instantiate(cubes,transform.position,Quaternion.identity) as GameObject;
+					GameObject tempCube=Instantiate(cubes,transform.position-new Vector3(Random.Range (-1f,1f),Random.Range(-1f,1f),0),Quaternion.identity) as GameObject;
 					SpawnCubes.currentCubes++;
 					tempCube.transform.parent=transform.parent;
-					tempCube.GetComponent<Rigidbody>().AddExplosionForce(2f,transform.position,1.5f);
+				//	tempCube.GetComponent<Rigidbody>().AddExplosionForce(2f,transform.position,1.5f);
 				}
 			}
 			Destroy(this.gameObject); 

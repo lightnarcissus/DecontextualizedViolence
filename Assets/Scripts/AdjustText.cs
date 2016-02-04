@@ -18,7 +18,7 @@ public class AdjustText : MonoBehaviour {
 	public float minSwipeDistX;
 
 	public float swipeForce=10f;
-
+	private int level=0;
 	
 	public static float swipeDir;
 	// Use this for initialization
@@ -125,13 +125,14 @@ public class AdjustText : MonoBehaviour {
 
 	public void CheckPosition()
 	{
-		if ((transform.position.x > 2.3f || transform.position.x < -2.3f) || (transform.position.y > 5.52f || transform.position.y < -3.52f)) {
-			//Debug.Log ("destroying");
-			transform.parent.GetComponent<BloodManager>().bloodList.Remove(this.gameObject);
-			Destroy(bloodText);
-			Destroy(gameObject);
-
-		}
+		level = transform.parent.GetComponent<BloodManager> ().level;
+//		if ((transform.position.x < -2.3f-(2.24f*(level-1)) || transform.position.x > 2.3f+(2.24f*(level-1))) || (transform.position.y < -3.5f-(2.45f*(level-1)) || transform.position.y > -5.52f+(1.89f*(level-1)))) {
+//			//Debug.Log ("destroying");
+////			transform.parent.GetComponent<BloodManager>().bloodList.Remove(this.gameObject);
+////			Destroy(bloodText);
+////			Destroy(gameObject);
+//
+//		}
 	}
 
 
